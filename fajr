@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+echo "Type fajr time:"
+
+read Fajr
+
+Date="$(date -d ''"$Fajr"'' '+%s')"
+sudo rtcwake -m mem -l -t $Date
+
+amixer -q -n set Master 75% unmute
+mpg123 azan.mp3
